@@ -63,14 +63,14 @@ function onEachFeature(feature, layer) {
    https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 */
 //get image relations
-let prom = fetch("/app/relator.json").then(res => res.json()).then(j => {
+let prom = fetch("/covid-spring-break-tracking/app/relator.json").then(res => res.json()).then(j => {
   imgSrcMap = j
 })
 // get the data
 
 prom.then(r => {
   return fetch(
-    "/app/geo_json.json"
+    "/covid-spring-break-tracking/app/geo_json.json"
   )
 })
   .then(function (response) {
