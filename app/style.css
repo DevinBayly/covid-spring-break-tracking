@@ -32,3 +32,7 @@ html, body {
 .glitchButton {
   z-index: 1000;
 }
+
+img {
+  width:50%;
+}
