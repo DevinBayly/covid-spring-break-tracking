@@ -1,4 +1,5 @@
 import requests
+import os
 import json
 import subprocess as sp
 import re
@@ -27,8 +28,8 @@ print(images)
 
 
 
-    
-
+## create a relater between url and image number    
+relator = {}
 i = 0
 for image in images:
     if "https" in image["url"]:
@@ -37,16 +38,10 @@ for image in images:
         file_type = image["url"].split(".")[-1]
         with open("image{}.{}".format(i,file_type),"wb") as phile:
             phile.write(req.content)
-        ## include the gps scraper
-        res = sp.run("identify -verbose /home/lil/Documents/mona_public_health_project/image{}.{} | grep GPS.*".format(i,file_type),shell=True,stdout=sp.PIPE)
-        image["GPSdata"]= res.stdout.decode()
-        image["filename"] = "image{}.{}".format(i,file_type)
-        time.sleep(2)
-        print("complete",image)
+        relator[image["url"]] = "image{}.{}".format(i,file_type)
         i+=1
 
+with open("relator.json","w") as phile:
+    phile.write(json.dumps(relator))
 
-with open("results.json","w") as phile:
-    phile.write(json.dumps(images))
-
-print("done overall")
+print("done")

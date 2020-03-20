@@ -16,7 +16,7 @@ let map = L.map("mapid", {
 // add the basemap tiles
 L.tileLayer(
   "https://stamen-tiles.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}@2x.png" // stamen toner tiles
- // stamen toner tiles
+  // stamen toner tiles
 ).addTo(map);
 
 /* EVENT HANDLERS
@@ -25,6 +25,7 @@ L.tileLayer(
    specific events.
 */
 
+let imgSrcMap
 let geojson; // this is global because of resetHighlight
 
 // change style
@@ -61,15 +62,21 @@ function onEachFeature(feature, layer) {
    the data has been loaded before trying to use it (in this case, add it to the map). Read more about Fetch:
    https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 */
-
+//get image relations
+let prom = fetch("./relator.json").then(res => res.json()).then(j => {
+  imgSrcMap = j
+})
 // get the data
-fetch(
-  "https://cdn.glitch.com/d90814a5-2432-4e09-bc14-27559563360f%2Fgeo_json.json?v=1584729892417"
-)
-  .then(function(response) {
+
+prom.then(r => {
+  return fetch(
+    "./geo_json.json"
+  )
+})
+  .then(function (response) {
     return response.json();
   })
-  .then(function(json) {
+  .then(function (json) {
     // this is where we do things with data
     doThingsWithData(json);
   });
@@ -84,12 +91,12 @@ function doThingsWithData(json) {
     // the function for `style` is defined inline (a.k.a. an "anonymous function")
     // the function for `onEachFeature` is defined earlier in the file
     // so we just set the value to the function name
-    
+
     onEachFeature: onEachFeature // call onEachFeature
   })
-    .bindPopup(function(layer) {
+    .bindPopup(function (layer) {
       return `<div><h1>${layer.feature.properties.text}</h1></div>
-      <div><img src=https://cors-anywhere.herokuapp.com/${layer.feature.properties.url}/></div>`; // use the NAME property as the popup value
+      <div><img src=./${imgSrcMap[layer.feature.properties.url]}  /></div>`; // use the NAME property as the popup value
     })
     .addTo(map); // add it to the map
 }
@@ -104,13 +111,16 @@ function assignColors(json, prop) {
     "#80cdc1",
     "#a6d96a",
     "#d7191c"
-    
+
   ];
   let retob = {}
-  json.features.forEach((e,i)=> {
-    retob[e.properties.objectid] = `${'#'+(function lol(m,s,c){return s[m.floor(m.random() * s.length)] +
-  (c && lol(m,s,c-1));})(Math,'0123456789ABCDEF',4)}`
+  json.features.forEach((e, i) => {
+    retob[e.properties.objectid] = `${'#' + (function lol(m, s, c) {
+      return s[m.floor(m.random() * s.length)] +
+        (c && lol(m, s, c - 1));
+    })(Math, '0123456789ABCDEF', 4)}`
   })
   console.log(retob)
   return retob;
 }
+
