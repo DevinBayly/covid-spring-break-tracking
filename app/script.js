@@ -96,7 +96,7 @@ function doThingsWithData(json) {
   })
     .bindPopup(function (layer) {
       return `<div><h1>${layer.feature.properties.text}</h1></div>
-      <div><img src=/app/${imgSrcMap[layer.feature.properties.url]}  /></div>`; // use the NAME property as the popup value
+      <div><img src=/covid-spring-break-tracking/app/${imgSrcMap[layer.feature.properties.url]}  /></div>`; // use the NAME property as the popup value
     })
     .addTo(map); // add it to the map
 }
