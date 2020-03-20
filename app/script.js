@@ -63,14 +63,14 @@ function onEachFeature(feature, layer) {
    https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 */
 //get image relations
-let prom = fetch("./relator.json").then(res => res.json()).then(j => {
+let prom = fetch("/app/relator.json").then(res => res.json()).then(j => {
   imgSrcMap = j
 })
 // get the data
 
 prom.then(r => {
   return fetch(
-    "./geo_json.json"
+    "/app/geo_json.json"
   )
 })
   .then(function (response) {
@@ -96,7 +96,7 @@ function doThingsWithData(json) {
   })
     .bindPopup(function (layer) {
       return `<div><h1>${layer.feature.properties.text}</h1></div>
-      <div><img src=./${imgSrcMap[layer.feature.properties.url]}  /></div>`; // use the NAME property as the popup value
+      <div><img src=/app/${imgSrcMap[layer.feature.properties.url]}  /></div>`; // use the NAME property as the popup value
     })
     .addTo(map); // add it to the map
 }
