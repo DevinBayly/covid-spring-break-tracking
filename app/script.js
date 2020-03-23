@@ -31,11 +31,6 @@ let geojson; // this is global because of resetHighlight
 // change style
 function highlightFeature(e) {
   let layer = e.target; // highlight the actual feature that should be highlighted
-  layer.setStyle({
-    weight: 1, // thicker border
-    color: "#000", // black
-    fillOpacity: 0.3 // a bit transparent
-  });
 }
 
 // reset to normal style
@@ -53,7 +48,20 @@ function onEachFeature(feature, layer) {
   layer.on({
     mouseover: highlightFeature, // a.k.a. hover
     mouseout: resetHighlight, // a.k.a. no longer hovering
-    //click:  // a.k.a. clicking
+    click:(e)=> {
+      setTimeout(()=> {
+      let img = document.querySelector(".studentpic")
+      console.log(img)
+      if (img.height > img.width){
+        img.id = "tallimg"
+      } else {
+        img.id = "wideimg"
+      }
+      },1000)
+      setTimeout(()=>{
+      document.querySelector(".leaflet-popup-content").style.width="100%"
+      },2000)
+    }  // a.k.a. clicking
   });
 }
 
@@ -63,14 +71,14 @@ function onEachFeature(feature, layer) {
    https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 */
 //get image relations
-let prom = fetch("/covid-spring-break-tracking/app/relator.json").then(res => res.json()).then(j => {
+let prom = fetch("relator.json").then(res => res.json()).then(j => {
   imgSrcMap = j
 })
 // get the data
 
 prom.then(r => {
   return fetch(
-    "/covid-spring-break-tracking/app/geo_json.json"
+    "geo_json.json"
   )
 })
   .then(function (response) {
@@ -95,8 +103,9 @@ function doThingsWithData(json) {
     onEachFeature: onEachFeature // call onEachFeature
   })
     .bindPopup(function (layer) {
-      return `<div><h1>${layer.feature.properties.text}</h1></div>
-      <div><img src=/covid-spring-break-tracking/app/${imgSrcMap[layer.feature.properties.url]}  /></div>`; // use the NAME property as the popup value
+      return `<div><h1>${layer.feature.properties.text}</h1>
+      <div class="imageholder"><img class="studentpic" src=${imgSrcMap[layer.feature.properties.url]}  /></div>
+      </div>`; // use the NAME property as the popup value
     })
     .addTo(map); // add it to the map
 }

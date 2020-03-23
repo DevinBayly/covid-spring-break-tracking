@@ -32,7 +32,15 @@ html, body {
 .glitchButton {
   z-index: 1000;
 }
-
-img {
-  width:50%;
+#wideimg {
+  width:400px;
+}
+#tallimg {
+  height:400px;
+}
+.leaflet-popup-content {
+  width:100%;
+}
+.leaflet-popup-content-wrapper {
+  display:flex;
 }
