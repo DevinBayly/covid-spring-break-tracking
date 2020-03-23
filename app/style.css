@@ -38,9 +38,3 @@ html, body {
 #tallimg {
   height:400px;
 }
-.leaflet-popup-content {
-  width:100%;
-}
-.leaflet-popup-content-wrapper {
-  display:flex;
-}
