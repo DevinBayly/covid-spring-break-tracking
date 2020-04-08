@@ -1,36 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>UArizona Covid-19 Spring Break Photos</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/covid-spring-break-tracking/app/style.css">
-    <link rel="stylesheet" href="style.css">
- 
-    <!-- import the webpage's javascript file -->
-    <script src="/covid-spring-break-tracking/app/script.js" defer></script>
 
-    <script src="script.js" defer></script>
-    <!-- import the Leaflet.js CSS and JavaScript files -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-     integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-     crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-     integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-     crossorigin=""></script>
-    
-  </head>  
-  <body>
-    <h1>Mona Arora's Public Health Spring Break Covid Tracker </h1>
-    This page presents pictures of disease prevention methods employed in public places wherever students of the U of A went during Spring Break.
-     <div id="mapid"></div>
+<head>
+  <title>UArizona Covid-19 Spring Break Photos</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- include the Glitch button to show what the webpage is about and
+  <!-- import the webpage's stylesheet -->
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- import the webpage's javascript file -->
+  <script src="./script.js" defer></script>
+
+  <!-- import the Leaflet.js CSS and JavaScript files -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+    crossorigin=""></script>
+
+</head>
+
+<body>
+  <h1>Beginning of an Outbreak</h1>
+  <h2>Preventing COVID19 in Community</h2>
+  <p>
+    This pilot project aims to capture some of the initial actions taken in community settings by businesses, schools,
+    and
+    other public places to mitigate the spread of COVID19. Students and faculty/staff from the College of Public Health
+    posted pictures of public health
+    measures they say during Spring Break 2020. This map illustrates both how far students may travel during Spring
+    Break as well as the different public health messages employed by organizations. This map and the associated <a
+      href="https://padlet.com/manand2/5jfh0gizfg6y">padlet</a>
+    data informs us about the spread of individuals, and the environments they encountered during the early phase of
+    COVID19 in the US.
+  </p>
+  <div id="Contributors">
+    <h2>Contributors</h2>
+    <h3>Mona Arora, MSPH, PhD</h3>
+    <div class="ind">
+
+      <p>Principal Research Specialist & Course instructor, University of Arizona</p>
+    </div>
+    <h3>Kiri Carini</h3>
+    <div class="ind">
+
+      <p>Geospatial Specialist, University of Arizona </p>
+      <p><a href="https://libguides.library.arizona.edu/GIS">https://libguides.library.arizona.edu/GIS</a></p>
+    </div>
+
+    <h3>
+      Devin Bayly
+    </h3>
+    <div class="ind">
+
+      <p>Research Technologies Data & Visualization Consultant,University of Arizona </p>
+      <p>
+        <a href="rtdv-intake.glitch.me">Request Project assistance</a>
+      </p>
+      <p><a href="https://it.arizona.edu/service/visualization-consulting">About</a></p>
+    </div>
+  </div>
+  <div id="mapid"></div>
+
+  <!-- include the Glitch button to show what the webpage is about and
           to make it easier for folks to view source and remix -->
-    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
-    <script src="https://button.glitch.me/button.js"></script>
-  </body>
+  <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+  <script src="https://button.glitch.me/button.js"></script>
+</body>
+
 </html>

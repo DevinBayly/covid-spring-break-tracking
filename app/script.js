@@ -71,7 +71,7 @@ function onEachFeature(feature, layer) {
    https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 */
 //get image relations
-let prom = fetch("/covid-spring-break-tracking/app/relator.json").then(res => res.json()).then(j => {
+let prom = fetch("./relator.json").then(res => res.json()).then(j => {
 
 //let prom = fetch("relator.json").then(res => res.json()).then(j => {
   imgSrcMap = j
@@ -80,7 +80,7 @@ let prom = fetch("/covid-spring-break-tracking/app/relator.json").then(res => re
 
 prom.then(r => {
   return fetch(
-  "/covid-spring-break-tracking/app/geo_json.json"
+  "./geo_json.json"
 
   )
   //"geo_json.json"
@@ -108,7 +108,7 @@ function doThingsWithData(json) {
   })
     .bindPopup(function (layer) {
       return `<div><h1>${layer.feature.properties.text}</h1>
-      <div class="imageholder"><img class="studentpic" src=/covid-spring-break-tracking/app/${imgSrcMap[layer.feature.properties.url]}  /></div>
+      <div class="imageholder"><img class="studentpic" src=./${imgSrcMap[layer.feature.properties.url]}  /></div>
       </div>`; // use the NAME property as the popup value
     })
     .addTo(map); // add it to the map
