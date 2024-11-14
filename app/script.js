@@ -14,11 +14,10 @@ let map = L.map("mapid", {
   scrollWheelZoom: true // don't zoom the map on scroll
 });
 // add the basemap tiles
-L.tileLayer(
-  "https://stamen-tiles.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}@2x.png" // stamen toner tiles
-  // stamen toner tiles
-).addTo(map);
-
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
 /* EVENT HANDLERS
    Event handlers are functions that respond to events on the page. These are
    defined first so they can each be attached to the data layer and triggered on
